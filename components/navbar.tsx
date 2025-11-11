@@ -117,7 +117,7 @@ export function Navbar() {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 bg-background"
+          className="fixed inset-0 z-50 bg-background min-h-screen"
         >
           <div className="container-xl gutter h-16 flex items-center justify-between">
             <Link
