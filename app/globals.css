@@ -16,6 +16,7 @@
   /* Fonts (wired via next/font -> CSS vars) */
   --font-sans: var(--font-anonymous, ui-monospace, "Anonymous Pro", monospace);
   --font-mono: var(--font-plex-mono, ui-monospace, "IBM Plex Mono", monospace);
+  --font-hero: var(--font-antonio, ui-sans-serif, "Antonio", sans-serif);
 }
 
 /* =========================
@@ -108,7 +109,7 @@
 
   /* Cards and sections */
   .card {
-    @apply bg-surface border border-border rounded-2xl;
+    @apply bg-surface border border-border rounded-sm;
   }
   .section {
     @apply bg-background;

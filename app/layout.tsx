@@ -1,9 +1,10 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Anonymous_Pro, IBM_Plex_Mono } from "next/font/google";
+import { Anonymous_Pro, IBM_Plex_Mono, Antonio } from "next/font/google";
 
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import GsapInit from "./gsap-init";
 
 /**
  * Fonts
@@ -22,6 +23,13 @@ const plexMono = IBM_Plex_Mono({
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
   variable: "--font-plex-mono",
+});
+
+const antonio = Antonio({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-hero",
 });
 
 /**
@@ -116,10 +124,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${anonymous.variable} ${plexMono.variable}`}
+      className={`${anonymous.variable} ${plexMono.variable} ${antonio.variable}`}
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground font-mono antialiased">
+        <GsapInit />
         <Navbar />
 
         {children}
