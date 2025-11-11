@@ -75,28 +75,32 @@ export function Hero() {
           WE BUILT TO BE REMEMBERED
         </h1>
 
-        {/* --- Mobile Horizontal Carousel --- */}
-        <div className="relative mt-8 w-full overflow-x-auto snap-x snap-mandatory scroll-smooth md:hidden">
-          <div className="flex gap-4 px-2 h-[500px]">
-            {CARDS.map((c, i) => (
-              <figure
-                key={i}
-                className="card shrink-0 w-[85%] snap-center overflow-hidden rounded-sm shadow-sm bg-surface"
-              >
-                <Image
-                  src={c.src}
-                  alt={c.alt}
-                  width={300}
-                  height={500}
-                  className="w-full h-full object-cover"
-                  priority={i < 2}
-                />
-              </figure>
-            ))}
+        {/* --- Mobile Horizontal Carousel (fixed fades) --- */}
+        <div className="relative mt-8 w-full md:hidden">
+          {/* scroller */}
+          <div className="overflow-x-auto snap-x snap-mandatory scroll-smooth">
+            <div className="flex gap-4 px-2 h-[500px]">
+              {CARDS.map((c, i) => (
+                <figure
+                  key={i}
+                  className="card shrink-0 w-[85%] snap-center overflow-hidden rounded-sm shadow-sm bg-surface"
+                >
+                  <Image
+                    src={c.src}
+                    alt={c.alt}
+                    width={300}
+                    height={500}
+                    className="w-full h-full object-cover"
+                    priority={i < 2}
+                  />
+                </figure>
+              ))}
+            </div>
           </div>
-          {/* Faint fade edges  */}
-          {/* <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-linear-to-r from-background to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-linear-to-l from-background to-transparent" /> */}
+
+          {/* fixed edge fades (don’t scroll) */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background to-transparent" />
         </div>
       </div>
 
