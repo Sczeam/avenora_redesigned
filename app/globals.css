@@ -1,26 +1,174 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* =========================
+   THEME TOKENS (Tailwind v4)
+   ========================= */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-background: #fff5ee; /* Base */
+  --color-foreground: #2f2a26; /* Primary text */
+  --color-foreground-2: #7d736b; /* Secondary text */
+  --color-accent: #5c5c5a; /* Accent (graphite) */
+  --color-surface: #fef2e8; /* Cards / alt sections */
+  --color-border: #e8e0d8; /* Dividers / hairlines */
+  --color-muted: #d9d3cc; /* Overlays / subtle tints */
+
+  /* Fonts (wired via next/font -> CSS vars) */
+  --font-sans: var(--font-anonymous, ui-monospace, "Anonymous Pro", monospace);
+  --font-mono: var(--font-plex-mono, ui-monospace, "IBM Plex Mono", monospace);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* =========================
+   BASE (Global Resets + Type)
+   ========================= */
+@layer base {
+  *,
+  ::before,
+  ::after {
+    @apply box-border;
+  }
+
+  html,
+  body {
+    @apply h-full;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+    /* Apple-inspired responsive body size */
+    @apply text-[15px] md:text-[17px] leading-[1.6] tracking-[0em];
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Headings — Anonymous Pro (Sans slot) */
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-sans text-foreground m-0;
+    /* default tight tracking for headings */
+    @apply tracking-[-0.01em];
+  }
+
+  /* Display / Hero */
+  h1 {
+    /* 36 → 56 (mobile → desktop) */
+    @apply font-bold leading-[1.2]
+           text-[36px] md:text-[56px];
+  }
+
+  /* H1 (section title) */
+  h2 {
+    /* 28 → 40 */
+    @apply font-bold leading-[1.25]
+           text-[28px] md:text-[40px];
+  }
+
+  /* H2 (subheading) */
+  h3 {
+    /* 22 → 32 */
+    @apply font-semibold leading-[1.3]
+           text-[22px] md:text-[32px];
+  }
+
+  /* H3 (minor heading) */
+  h4 {
+    /* 18 → 24 */
+    @apply font-medium leading-[1.35]
+           text-[18px] md:text-[24px];
+  }
+
+  p {
+    @apply m-0;
+  }
+
+  small {
+    /* 13 → 14 */
+    @apply text-foreground-2 text-[13px] md:text-[14px] leading-[1.5];
+  }
+
+  .label,
+  .caption {
+    /* Tiny / Label (12) with slight positive tracking */
+    @apply text-foreground-2 text-[12px] leading-[1.4] tracking-[0.02em];
+  }
+
+  a {
+    @apply text-accent no-underline;
+  }
+  a:hover {
+    @apply opacity-90;
+  }
+
+  hr {
+    @apply border-0 border-t border-border m-0;
+  }
+
+  /* Cards and sections */
+  .card {
+    @apply bg-surface border border-border rounded-2xl;
+  }
+  .section {
+    @apply bg-background;
+  }
+
+  /* Selection (needs base CSS selector) */
+  ::selection {
+    /* subtle accent-tinted selection */
+    background: color-mix(in oklab, var(--color-accent) 18%, white);
+    color: var(--color-foreground);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* =========================
+   COMPONENTS (Optional shorthands)
+   ========================= */
+@layer components {
+  /* Buttons example (subtle, system-ready) */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2
+           px-5 py-3 rounded-sm border border-border
+           bg-surface text-foreground font-medium
+           transition-opacity;
+  }
+  .btn:hover {
+    @apply opacity-90;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-background border-transparent;
+  }
+  .btn-accent:hover {
+    @apply opacity-90;
+  }
+}
+
+/* =========================
+   UTILITIES (Layout helpers)
+   ========================= */
+@layer utilities {
+  /* Container and gutters used in your comps */
+  .container-xl {
+    @apply mx-auto w-full max-w-7xl;
+  }
+  .gutter {
+    @apply px-4 md:px-6 lg:px-8;
+  }
+
+  /* Vertical rhythm helpers */
+  .section-pt {
+    @apply pt-16 md:pt-24;
+  }
+  .section-pb {
+    @apply pb-16 md:pb-24;
+  }
+
+  /* Simple 12-col grid helper (optional) */
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
 }
