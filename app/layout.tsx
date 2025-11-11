@@ -130,8 +130,7 @@ export default function RootLayout({
       <body className="bg-background text-foreground font-mono antialiased">
         <GsapInit />
         <Navbar />
-
-        {children}
+        <main className="pt-16 md:pt-18">{children}</main>
       </body>
     </html>
   );

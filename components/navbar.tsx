@@ -35,7 +35,8 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur supports-backdrop-filter:bg-background/70">
+    // in app/components/navbar.tsx, header className
+    <header className="fixed inset-x-0 top-0 z-999 bg-background/80 backdrop-blur supports-backdrop-filter:bg-background/70">
       <nav className="container-xl gutter h-16 md:h-18 flex items-center justify-between">
         {/* Left — Logo */}
         <Link

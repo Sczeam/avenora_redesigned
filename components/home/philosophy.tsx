@@ -1,6 +1,6 @@
 export function PhilosophySection() {
   return (
-    <section className="md:min-h-screen">
+    <section className="md:min-h-screen mt-10">
       <div className="gutter md:h-[calc(100vh-4.5rem)]">
         {/* 3 columns × 3 rows on desktop; stacked on mobile */}
         <div className="grid gap-4 md:gap-20 md:grid-cols-3 md:grid-rows-3  h-full">
@@ -18,8 +18,8 @@ export function PhilosophySection() {
               This is Avenora
             </p>
           </div>
-          <div className="md:col-start-2 md:row-start-3 flex items-end">
-            <p className="text-foreground-2 font-mono text-[14px] md:text-[15px] leading-[1.6] md:w-[70%] ">
+          <div className="md:col-start-2 md:row-start-3 flex items-end pb-10">
+            <p className="text-foreground-2 font-mono text-[14px] md:text-[15px] leading-[1.6] md:w-[70%]">
               We believe good design is invisible. Every interaction,
               transition, and layout should feel natural, not forced. We don’t
               chase trends. We refine them.
