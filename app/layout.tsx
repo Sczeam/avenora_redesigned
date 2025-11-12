@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: "/og.jpg", // put your OG image in /public/og.jpg (1200x630)
+        url: "/og.png", // put your OG image in /public/og.jpg (1200x630)
         width: 1200,
         height: 630,
         alt: "Avenora — Minimal, Modern Web Design & Development",
@@ -116,7 +116,7 @@ export const metadata: Metadata = {
   },
   category: "technology",
   // Optional: theme color that matches your bg (light only for now)
-  themeColor: "#FFF5EE",
+  // themeColor: "#FFF5EE",
 };
 
 export default function RootLayout({
