@@ -128,7 +128,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground font-mono antialiased">
-        <GsapInit />
+        {/* <GsapInit /> */}
         <Navbar />
         <main className="pt-16 md:pt-18">{children}</main>
       </body>
