@@ -75,6 +75,9 @@ export function Hero() {
           WE BUILT TO BE REMEMBERED
         </h1>
 
+        <div className="relative w-full flex justify-center ">
+          <div className="w-[600px] h-[50px] md:w-[1000px] md:h-[100px] rounded-[50%] bg-foreground/50 filter blur-2xl " />
+        </div>
         {/* --- Mobile Horizontal Carousel (fixed fades) --- */}
         <div className="relative mt-8 w-full md:hidden">
           {/* scroller */}
