@@ -6,6 +6,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import GsapInit from "./gsap-init";
 import { Footer } from "@/components/footer";
+import SmoothScroll from "@/components/smoothScroll";
 
 /**
  * Fonts
@@ -129,10 +130,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground font-mono antialiased">
-        {/* <GsapInit /> */}
-        <Navbar />
-        <main className="pt-16 md:pt-18">{children}</main>
-        <Footer />
+        <SmoothScroll>
+          <Navbar />
+          <main className="pt-16 md:pt-18">{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

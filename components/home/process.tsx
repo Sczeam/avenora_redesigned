@@ -55,41 +55,59 @@ export function ProcessSection() {
       )
         return;
 
-      // ——— Pinning (pin while the middle steps scroll; then release)
-      const stepsCol = stepsColRef.current; // use the real ref you already have
+      // ——— Pinning
+      const stepsCol = stepsColRef.current;
       if (!stepsCol) return;
 
-      // read sticky offset from CSS (md:top-24 ≈ 96px)
-      const stickyTopPx =
-        parseFloat(getComputedStyle(leftPanel).top || "0") || 0;
-
-      // kill old pins if hot-reloading
+      // kill any old pins (hot reload safety)
       ScrollTrigger.getAll().forEach((st) => {
         const v = st.vars;
         if (v?.pin === leftPanel || v?.pin === rightPanel) st.kill();
       });
 
-      // Pin LEFT panel while steps column scrolls
+      // Helper to compute a stable end distance:
+      // pin until the bottom of steps column rises above the viewport bottom.
+      const pinEndDistance = () => {
+        //   const rect = stepsCol.getBoundingClientRect();
+        // Use scrollHeight to be safe with dynamic content
+        const total = stepsCol.scrollHeight;
+        const vh = window.innerHeight;
+        //pin = total height minus the part visible at any time
+        return `+=${Math.max(total - vh, 0)}`;
+      };
+
+      // Pin LEFT panel
       ScrollTrigger.create({
         trigger: stepsCol,
-        start: () => `top top+=${stickyTopPx}`,
-        end: () => `bottom bottom-=${stickyTopPx}`,
+        start: "top top",
+        end: pinEndDistance, // precise end
         pin: leftPanel,
-        // pinSpacing: true,
-        invalidateOnRefresh: true,
+        pinSpacing: true, // avoids layout jump when unpinning
+        pinReparent: true, // smoother in CSS grid
         anticipatePin: 1,
+        invalidateOnRefresh: true,
+        refreshPriority: 1,
+        // add to both ScrollTriggers
+        pinType: "fixed",
       });
 
-      // Pin RIGHT panel the same way
+      // Pin RIGHT panel
       ScrollTrigger.create({
         trigger: stepsCol,
-        start: () => `top top+=${stickyTopPx}`,
-        end: () => `bottom bottom-=${stickyTopPx}`,
+        start: "top top",
+        end: pinEndDistance,
         pin: rightPanel,
         pinSpacing: true,
-        invalidateOnRefresh: true,
+        pinReparent: true,
         anticipatePin: 1,
+        invalidateOnRefresh: true,
+        refreshPriority: 1,
+        // add to both ScrollTriggers
+        pinType: "fixed",
       });
+
+      // After fonts/layout finalize, refresh ST (prevents 1-frame jitter)
+      document.fonts?.ready?.then?.(() => ScrollTrigger.refresh());
 
       // ——— Colored blocks entrance (slower, same ease) when step 001 reaches
       const secRect = section.getBoundingClientRect();
@@ -303,7 +321,7 @@ export function ProcessSection() {
           <aside className="md:col-span-1">
             <div
               ref={leftPanelRef}
-              className="relative md:sticky md:top-24 md:h-[calc(100vh-4.5rem)]"
+              className="relative md:top-24 md:h-[calc(100vh-4.5rem)]"
             >
               <h2
                 ref={titleRef}
