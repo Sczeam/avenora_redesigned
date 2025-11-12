@@ -1,3 +1,4 @@
+import { CTASection } from "@/components/home/cta";
 import { Hero } from "@/components/home/hero";
 import { PhilosophySection } from "@/components/home/philosophy";
 import { ProcessSection } from "@/components/home/process";
@@ -12,6 +13,7 @@ export default function Home() {
       <ServicesSection />
       <ProjectsSection />
       <ProcessSection />
+      <CTASection />
     </>
   );
 }

@@ -55,26 +55,40 @@ export function ProcessSection() {
       )
         return;
 
-      // ——— Pinning (unchanged)
-      const stepsCol = section.querySelector(
-        '[data-col="steps"]'
-      ) as HTMLElement | null;
-      const stepsHeight = stepsCol?.offsetHeight ?? 0;
-      const pinEnd = () => `+=${Math.max(stepsHeight - 200, 0)}`;
+      // ——— Pinning (pin while the middle steps scroll; then release)
+      const stepsCol = stepsColRef.current; // use the real ref you already have
+      if (!stepsCol) return;
 
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: pinEnd,
-        pin: leftPanel,
-        pinSpacing: false,
+      // read sticky offset from CSS (md:top-24 ≈ 96px)
+      const stickyTopPx =
+        parseFloat(getComputedStyle(leftPanel).top || "0") || 0;
+
+      // kill old pins if hot-reloading
+      ScrollTrigger.getAll().forEach((st) => {
+        const v = st.vars;
+        if (v?.pin === leftPanel || v?.pin === rightPanel) st.kill();
       });
+
+      // Pin LEFT panel while steps column scrolls
       ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: pinEnd,
+        trigger: stepsCol,
+        start: () => `top top+=${stickyTopPx}`,
+        end: () => `bottom bottom-=${stickyTopPx}`,
+        pin: leftPanel,
+        // pinSpacing: true,
+        invalidateOnRefresh: true,
+        anticipatePin: 1,
+      });
+
+      // Pin RIGHT panel the same way
+      ScrollTrigger.create({
+        trigger: stepsCol,
+        start: () => `top top+=${stickyTopPx}`,
+        end: () => `bottom bottom-=${stickyTopPx}`,
         pin: rightPanel,
-        pinSpacing: false,
+        pinSpacing: true,
+        invalidateOnRefresh: true,
+        anticipatePin: 1,
       });
 
       // ——— Colored blocks entrance (slower, same ease) when step 001 reaches
@@ -289,7 +303,7 @@ export function ProcessSection() {
           <aside className="md:col-span-1">
             <div
               ref={leftPanelRef}
-              className="relative md:sticky md:top-24 h-[calc(100vh-4.5rem)]"
+              className="relative md:sticky md:top-24 md:h-[calc(100vh-4.5rem)]"
             >
               <h2
                 ref={titleRef}
@@ -311,7 +325,7 @@ export function ProcessSection() {
           <div
             ref={stepsColRef}
             data-col="steps"
-            className="md:col-span-1 pt-[400px]"
+            className="md:col-span-1 md:pt-[400px]"
           >
             <ol className="space-y-16">
               {STEPS.map((s, i) => (
@@ -338,7 +352,7 @@ export function ProcessSection() {
                     {s.bullets.map((b, bi) => (
                       <li
                         key={bi}
-                        data-anim="bullet" // 👈 each line animates on enter
+                        data-anim="bullet"
                         className="font-mono text-foreground-2 text-[14px] leading-[1.6]"
                       >
                         <span className="text-foreground-2 mr-1">

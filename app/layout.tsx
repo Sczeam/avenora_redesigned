@@ -5,6 +5,7 @@ import { Anonymous_Pro, IBM_Plex_Mono, Antonio } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import GsapInit from "./gsap-init";
+import { Footer } from "@/components/footer";
 
 /**
  * Fonts
@@ -131,6 +132,7 @@ export default function RootLayout({
         {/* <GsapInit /> */}
         <Navbar />
         <main className="pt-16 md:pt-18">{children}</main>
+        <Footer />
       </body>
     </html>
   );
