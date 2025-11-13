@@ -28,17 +28,22 @@ export const STEPS: Step[] = [
     title: "DESIGN",
     bullets: [
       "Where clarity meets emotion.",
-      "We iterate in the open, testing states, motion, and edge cases.",
-      "Design systems, not one-off screens.",
+      "We design with rhythm, hierarchy, and restraint.",
+      "Every frame is crafted to feel effortless, precise, and timeless.",
     ],
   },
   {
     id: "004",
     title: "BUILD",
     bullets: [
-      "Production-grade implementation in Next.js.",
-      "Performance, accessibility, and maintainability are non-negotiable.",
-      "Ship, observe, refine.",
+      "Built cleanly, coded beautifully.",
+      "Fast, accessible, and scalable — without sacrificing craft.",
+      "We obsess over the invisible details.",
     ],
+  },
+  {
+    id: "005",
+    title: "LAUNCH",
+    bullets: ["We test, refine, and deliver a flawless handoff."],
   },
 ];

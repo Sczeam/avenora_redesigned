@@ -5,8 +5,8 @@ export type Service = {
 };
 
 export const SERVICES: Service[] = [
-  { id: "001", label: "BRANDING", href: "/services/branding" },
-  { id: "002", label: "WEB DESIGN", href: "/services/web-design" },
-  { id: "003", label: "DEVELOPMENT", href: "/services/development" },
-  { id: "004", label: "MOTION GRAPHICS", href: "/services/motion" },
+  { id: "001", label: "DESIGN", href: "/services/#branding" },
+  { id: "002", label: "DEVELOPMENT", href: "/services/#web-design" },
+  { id: "003", label: "FULLSTACK", href: "/services/#development" },
+  // { id: "004", label: "MOTION GRAPHICS", href: "/services/#motion" },
 ];
