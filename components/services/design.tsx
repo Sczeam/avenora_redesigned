@@ -259,9 +259,7 @@ export function DesignServiceSection() {
               {/* Right: Contact CTA */}
               <div className="md:pt-3">
                 <Link
-                  href={
-                    service.href || "https://www.instagram.com/buildwithavenora"
-                  }
+                  href={"https://www.instagram.com/buildwithavenora"}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex h-11 items-center justify-center border border-foreground text-foreground
