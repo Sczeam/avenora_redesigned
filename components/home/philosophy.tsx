@@ -225,7 +225,7 @@ export function PhilosophySection() {
   );
 
   return (
-    <section ref={root} className="md:min-h-screen mt-10">
+    <section ref={root} id="about" className="md:min-h-screen mt-10">
       <div className="gutter md:h-[calc(100vh-4.5rem)]">
         <div className="grid gap-4 md:gap-20 md:grid-cols-3 md:grid-rows-3 h-full">
           {/* LEFT — spans all rows */}
@@ -247,20 +247,20 @@ export function PhilosophySection() {
           <div className="md:col-start-2 md:row-start-3 flex items-end pb-10">
             <p className="ph-body text-foreground-2 font-mono text-[14px] md:text-[15px] leading-[1.6] md:w-[70%]">
               We believe good design is invisible. Every interaction,
-              transition, and layout should feel natural, not forced. We don’t
-              chase trends. We refine them.
+              transition, and layout should feel natural, not forced. We
+              don&apos;t chase trends. We refine them.
             </p>
           </div>
 
           {/* RIGHT */}
           <div className="md:col-start-3 pt-20 md:row-start-1 md:self-start md:justify-self-end w-full h-full ph-right">
             <h4 className="font-sans uppercase tracking-[0.02em] text-foreground text-[16px] md:text-[24px] leading-normal text-left">
-              Avenora isn’t about making more websites
+              Avenora isn&apos;t about making more websites
             </h4>
           </div>
           <div className="md:col-start-3 md:row-start-2 md:self-start max-w-[30ch] ph-right">
             <h4 className="font-sans text-foreground text-[16px] md:text-[24px] leading-[1.6]">
-              It’s about making better ones.
+              It&apos;s about making better ones.
             </h4>
           </div>
           <div className="hidden md:block md:col-start-3 md:row-start-3" />

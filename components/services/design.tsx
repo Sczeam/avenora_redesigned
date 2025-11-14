@@ -218,6 +218,7 @@ export function DesignServiceSection() {
   return (
     <section
       ref={rootRef}
+      id="services"
       aria-labelledby="services-heading"
       className="border-t border-border"
     >
@@ -243,7 +244,7 @@ export function DesignServiceSection() {
                 </h3>
 
                 {service.desc && (
-                  <p className="mt-5 max-w-[80ch] font-mono text-[14px] leading-[1.7] text-foreground">
+                  <p className="mt-5 max-w-[52ch] font-mono text-[14px] leading-[1.7] text-foreground">
                     {service.desc}
                   </p>
                 )}
@@ -258,7 +259,11 @@ export function DesignServiceSection() {
               {/* Right: Contact CTA */}
               <div className="md:pt-3">
                 <Link
-                  href={service.href || "/contact"}
+                  href={
+                    service.href || "https://www.instagram.com/buildwithavenora"
+                  }
+                  target="_blank"
+                  rel="noreferrer"
                   className="inline-flex h-11 items-center justify-center border border-foreground text-foreground
                              px-8 font-mono text-[13px] tracking-[0.12em] uppercase hover:bg-foreground hover:text-background
                              transition-colors"
