@@ -8,6 +8,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import SmoothScroll from "@/components/smoothScroll";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 /**
  * Fonts
@@ -99,12 +100,12 @@ export const metadata: Metadata = {
     icon: [
       { url: "/favicon.ico" },
       { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      // { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      // { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
-  manifest: "/site.webmanifest", // add one in /public if you have a PWA plan
+  // manifest: "/site.webmanifest", // add one in /public if you have a PWA plan
   robots: {
     index: true,
     follow: true,
@@ -137,6 +138,24 @@ export default function RootLayout({
           <Footer />
         </SmoothScroll>
         <Analytics />
+        <SpeedInsights />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Avenora",
+              url: "https://avenora.co.uk",
+              description:
+                "Avenora is a design-led web studio crafting minimalist, high-performance websites with precision and care.",
+              creator: {
+                "@type": "Organization",
+                name: "Avenora",
+              },
+            }),
+          }}
+        />
       </body>
     </html>
   );

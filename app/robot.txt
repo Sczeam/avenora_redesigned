@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://avenora.co.uk/sitemap.xml
