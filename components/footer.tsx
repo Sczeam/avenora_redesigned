@@ -88,9 +88,9 @@ export function Footer() {
               <li>
                 <a
                   className="hover:text-foreground transition-colors"
-                  href="mailto:hello@avenora.co.uk"
+                  href="mailto:contact@avenora.co.uk"
                 >
-                  hello@avenora.co.uk
+                  contact@avenora.co.uk
                 </a>
               </li>
               {/* <li>
