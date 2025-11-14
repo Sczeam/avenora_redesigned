@@ -16,7 +16,7 @@ export function CTASection() {
 
           <div className="mt-5 md:mt-6">
             <Link
-              href="/contact"
+              href="https://instagram.com/buildwithavenora"
               className="inline-flex items-center justify-center rounded-sm
                          bg-foreground text-background
                          h-10 px-5 md:h-11 md:px-6
