@@ -42,7 +42,6 @@ export function Footer() {
                 { href: "/", label: "Home" },
                 { href: "/services", label: "Services" },
                 { href: "/about", label: "About" },
-                { href: "/contact", label: "Contact" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link
@@ -63,10 +62,9 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               {[
-                { href: "/services/branding", label: "Branding" },
-                { href: "/services/web-design", label: "Web Design" },
-                { href: "/services/development", label: "Development" },
-                { href: "/services/motion", label: "Motion Graphics" },
+                { href: "/services/#design", label: "Design" },
+                { href: "/services/#development", label: "Development" },
+                { href: "/services/#full-stack", label: "FullStack" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link
