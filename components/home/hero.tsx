@@ -141,7 +141,7 @@ export function Hero() {
   return (
     <section
       ref={root}
-      className="relative overflow-hidden h-[calc(100vh-4.5rem)] flex flex-col items-center md:justify-center"
+      className="relative overflow-hidden h-[calc(100vh-4.5rem)] flex flex-col items-center justify-center"
     >
       <div className="container-xl gutter section-pt section-pb text-center">
         {/* Overline */}
@@ -153,7 +153,7 @@ export function Hero() {
         </p>
 
         {/* Big headliner */}
-        <h1 className="font-hero font-bold text-[75px] md:text-[150px] text-center uppercase leading-[1.2] tracking-[-0.01em] select-none">
+        <h1 className="font-hero font-bold text-[40px] md:text-[150px] text-center uppercase leading-[1.2] tracking-[-0.01em] select-none">
           <span ref={setWordRef(0)} className="inline-block home-hero-word">
             WE
           </span>{" "}

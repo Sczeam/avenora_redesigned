@@ -67,43 +67,47 @@ export function ProcessSection() {
 
       // Helper to compute a stable end distance:
       // pin until the bottom of steps column rises above the viewport bottom.
-      const pinEndDistance = () => {
-        //   const rect = stepsCol.getBoundingClientRect();
-        // Use scrollHeight to be safe with dynamic content
-        const total = stepsCol.scrollHeight;
-        const vh = window.innerHeight;
-        //pin = total height minus the part visible at any time
-        return `+=${Math.max(total - vh, 0)}`;
-      };
 
+      const mm = gsap.matchMedia();
       // Pin LEFT panel
-      ScrollTrigger.create({
-        trigger: stepsCol,
-        start: "top top",
-        end: pinEndDistance, // precise end
-        pin: leftPanel,
-        pinSpacing: true, // avoids layout jump when unpinning
-        pinReparent: true, // smoother in CSS grid
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        refreshPriority: 1,
-        // add to both ScrollTriggers
-        pinType: "fixed",
-      });
+      mm.add("(min-width: 768px)", () => {
+        const pinEndDistance = () => {
+          //   const rect = stepsCol.getBoundingClientRect();
+          // Use scrollHeight to be safe with dynamic content
+          const total = stepsCol.scrollHeight;
+          const vh = window.innerHeight;
+          //pin = total height minus the part visible at any time
+          return `+=${Math.max(total - vh, 0)}`;
+        };
+        // Pin LEFT panel
+        ScrollTrigger.create({
+          trigger: stepsCol,
+          start: "top top",
+          end: pinEndDistance, // precise end
+          pin: leftPanel,
+          pinSpacing: true, // avoids layout jump when unpinning
+          pinReparent: true, // smoother in CSS grid
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          refreshPriority: 1,
+          // add to both ScrollTriggers
+          pinType: "fixed",
+        });
 
-      // Pin RIGHT panel
-      ScrollTrigger.create({
-        trigger: stepsCol,
-        start: "top top",
-        end: pinEndDistance,
-        pin: rightPanel,
-        pinSpacing: true,
-        pinReparent: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        refreshPriority: 1,
-        // add to both ScrollTriggers
-        pinType: "fixed",
+        // Pin RIGHT panel
+        ScrollTrigger.create({
+          trigger: stepsCol,
+          start: "top top",
+          end: pinEndDistance,
+          pin: rightPanel,
+          pinSpacing: true,
+          pinReparent: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          refreshPriority: 1,
+          // add to both ScrollTriggers
+          pinType: "fixed",
+        });
       });
 
       // After fonts/layout finalize, refresh ST (prevents 1-frame jitter)
@@ -389,7 +393,7 @@ export function ProcessSection() {
           <div className="relative md:col-span-1">
             <div
               ref={rightPanelRef}
-              className="relative md:sticky md:top-24 h-[calc(100vh-4.5rem)]"
+              className="relative md:sticky md:top-24 md:h-[calc(100vh-4.5rem)]"
             >
               <div
                 ref={rightBlockRef}
