@@ -4,9 +4,10 @@ import { Anonymous_Pro, IBM_Plex_Mono, Antonio } from "next/font/google";
 
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
-import GsapInit from "./gsap-init";
+
 import { Footer } from "@/components/footer";
 import SmoothScroll from "@/components/smoothScroll";
+import { Analytics } from "@vercel/analytics/react";
 
 /**
  * Fonts
@@ -135,6 +136,7 @@ export default function RootLayout({
           <main className="pt-16 md:pt-18">{children}</main>
           <Footer />
         </SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );
