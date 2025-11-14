@@ -174,3 +174,18 @@
     gap: 1.5rem;
   }
 }
+.sv-avenora {
+  position: relative;
+  z-index: 0;
+}
+
+/* highlight block drawn via scaleX */
+.sv-avenora::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-foreground);
+  transform-origin: left center;
+  transform: scaleX(var(--a-highlight-scale, 0));
+  z-index: -1;
+}

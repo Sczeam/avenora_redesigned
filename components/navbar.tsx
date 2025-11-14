@@ -34,6 +34,26 @@ export function Navbar() {
     };
   }, [open]);
 
+  const handleHashClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    // Check if it's a hash link
+    if (href.startsWith("/#")) {
+      const hash = href.substring(2); // Remove '/#'
+
+      // Only handle if we're already on the home page
+      if (pathname === "/") {
+        e.preventDefault();
+        const target = document.getElementById(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+      // If not on home page, let the link navigate normally
+    }
+  };
+
   return (
     // in app/components/navbar.tsx, header className
     <header className="fixed inset-x-0 top-0 z-999 bg-background/80 backdrop-blur supports-backdrop-filter:bg-background/70">
@@ -70,11 +90,13 @@ export function Navbar() {
             const active =
               item.href === "/"
                 ? pathname === "/"
-                : pathname.startsWith(item.href);
+                : pathname.startsWith(item.href.split("#")[0]);
+
             return (
               <li key={item.href}>
                 <Link
                   href={item.href}
+                  onClick={(e) => handleHashClick(e, item.href)}
                   className={[
                     "text-[12px] tracking-[0.12em] uppercase",
                     active ? "text-foreground" : "text-foreground-2",
@@ -91,7 +113,9 @@ export function Navbar() {
         {/* Right — Contact (desktop) */}
         <div className="hidden md:block">
           <Link
-            href="/contact"
+            href="https://www.instagram.com/buildwithavenora"
+            target="_blank"
+            rel="noreferrer"
             className="btn bg-foreground text-background h-9 px-4 text-[12px] tracking-[0.12em] uppercase"
           >
             Contact Us
@@ -149,22 +173,29 @@ export function Navbar() {
           </div>
 
           <ul className="gutter mt-6 flex flex-col gap-3">
-            {NAV.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={() => setOpen(false)} // <— close on tap
-                  className="block py-3 text-[22px] leading-[1.3] font-semibold text-foreground"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {NAV.map((item) => {
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={(e) => {
+                      handleHashClick(e, item.href);
+                      setOpen(false);
+                    }}
+                    className="block py-3 text-[22px] leading-[1.3] font-semibold text-foreground"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="gutter mt-6">
             <Link
-              href="/contact"
+              href="https://www.instagram.com/buildwithavenora"
+              target="_blank"
+              rel="noreferrer"
               onClick={() => setOpen(false)} // <— close on tap
               className="btn btn-accent w-full h-12 text-[13px] tracking-[0.12em] uppercase"
             >

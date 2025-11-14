@@ -2,43 +2,7 @@
 
 import Image from "next/image";
 import Link, { type LinkProps } from "next/link";
-
-type Project = {
-  id: string;
-  title: string; // e.g., "ESTORA"
-  tag?: string; // e.g., "WEBSITE"
-  cover: string; // image path
-  href?: LinkProps["href"];
-};
-
-const PROJECTS: Project[] = [
-  {
-    id: "estora-1",
-    title: "ESTORA",
-    tag: "WEBSITE",
-    cover: "/images/projects/estora-hero.png",
-    href: "/work/estora",
-  },
-  {
-    id: "estora-2",
-    title: "ESTORA",
-    tag: "WEBSITE",
-    cover: "/images/projects/estora-hero.png",
-    href: "/work/estora",
-  },
-  {
-    id: "estora-3",
-    title: "ESTORA",
-    tag: "WEBSITE",
-    cover: "/images/projects/estora-hero.png",
-  },
-  {
-    id: "estora-4",
-    title: "ESTORA",
-    tag: "WEBSITE",
-    cover: "/images/projects/estora-hero.png",
-  },
-];
+import { Project, PROJECTS } from "@/content/home/projects";
 
 export function ProjectsSection() {
   return (
@@ -78,14 +42,14 @@ function CardInner({ p }: { p: Project }) {
   return (
     <>
       {/* Inset canvas */}
-      <div className="rounded-t-sm bg-surface p-4 md:p-6 ">
+      <div className="rounded-t-sm bg-surface ">
         <figure className="relative aspect-16/7 w-full overflow-hidden rounded-md">
           <Image
             src={p.cover}
             alt={p.title}
             fill
             priority
-            className="object-cover"
+            className="object-cover object-top"
           />
         </figure>
       </div>

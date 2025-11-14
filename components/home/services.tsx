@@ -39,7 +39,11 @@ type Service = {
 
 export function ServicesSection() {
   return (
-    <section aria-labelledby="services-heading" className="relative">
+    <section
+      id="services"
+      aria-labelledby="services-heading"
+      className="relative"
+    >
       <div className="gutter section-pt section-pb">
         <h2
           id="services-heading"

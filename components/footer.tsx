@@ -27,8 +27,8 @@ export function Footer() {
             </Link>
 
             <p className="mt-5 max-w-[38ch] font-mono text-[13px] leading-[1.7] text-foreground-2">
-              We build quietly confident websites that feel inevitable — simple,
-              intentional, and built to be remembered.
+              We build websites that feel inevitable — simple, intentional,
+              effective and built to be remembered.
             </p>
           </div>
 
@@ -42,7 +42,6 @@ export function Footer() {
                 { href: "/", label: "Home" },
                 { href: "/services", label: "Services" },
                 { href: "/about", label: "About" },
-                { href: "/contact", label: "Contact" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link
@@ -63,10 +62,9 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               {[
-                { href: "/services/branding", label: "Branding" },
-                { href: "/services/web-design", label: "Web Design" },
-                { href: "/services/development", label: "Development" },
-                { href: "/services/motion", label: "Motion Graphics" },
+                { href: "/services/#design", label: "Design" },
+                { href: "/services/#development", label: "Development" },
+                { href: "/services/#full-stack", label: "FullStack" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link
@@ -95,36 +93,36 @@ export function Footer() {
                   hello@avenora.co.uk
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a
                   className="hover:text-foreground transition-colors"
                   href="tel:+447000000000"
                 >
                   +44 7000 000000
                 </a>
-              </li>
+              </li> */}
             </ul>
 
-            <div className="mt-4 flex items-center gap-3">
+            <div className="mt-4 flex flex-col items-start gap-3">
               {/* Keep socials simple text for now; swap to icons later if you like */}
               <a
-                href="https://instagram.com/"
+                href="https://instagram.com/buildwithavenora"
                 target="_blank"
                 rel="noreferrer"
                 className="font-mono text-[12px] tracking-[0.14em] uppercase text-foreground-2 hover:text-foreground"
               >
                 Instagram
               </a>
-              <span className="text-foreground-2">/</span>
+              {/* <span className="text-foreground-2">/</span> */}
               <a
-                href="https://twitter.com/"
+                href="https://www.facebook.com/profile.php?id=61582889211713"
                 target="_blank"
                 rel="noreferrer"
                 className="font-mono text-[12px] tracking-[0.14em] uppercase text-foreground-2 hover:text-foreground"
               >
-                Twitter
+                Facebook
               </a>
-              <span className="text-foreground-2">/</span>
+
               <a
                 href="https://linkedin.com/"
                 target="_blank"

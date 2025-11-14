@@ -7,38 +7,56 @@ export type Step = {
 export const STEPS: Step[] = [
   {
     id: "001",
-    title: "DISCOVERY",
+    title: "LEAD & DISCOVERY",
     bullets: [
-      "We listen before we build.",
-      "Every project starts with understanding your story, goals, and users.",
-      "We define the core problem before deciding what to design.",
+      "We start with a conversation, not a proposal.",
+      "Clarify goals, scope, timeline, and budget to check fit.",
+      "Capture everything in a clear, internal project brief.",
     ],
   },
   {
     id: "002",
-    title: "STRATEGY",
+    title: "PROPOSAL & CONTRACT",
     bullets: [
-      "We translate ideas into clear direction.",
-      "Site architecture, content flow, and experience mapping come first.",
-      "Every decision is intentional — driven by purpose, not preference.",
+      "Turn the brief into a structured, easy-to-read proposal.",
+      "Define scope, deliverables, investment, and timeline upfront.",
+      "Secure the project with a signed agreement and 50% deposit.",
     ],
   },
   {
     id: "003",
-    title: "DESIGN",
+    title: "PLANNING & STRATEGY",
     bullets: [
-      "Where clarity meets emotion.",
-      "We iterate in the open, testing states, motion, and edge cases.",
-      "Design systems, not one-off screens.",
+      "Map the site structure, user flows, and milestones.",
+      "Gather all brand assets, copy, and references before we design.",
+      "Align expectations so success is defined before we build.",
     ],
   },
   {
     id: "004",
-    title: "BUILD",
+    title: "DESIGN & DEVELOPMENT",
     bullets: [
-      "Production-grade implementation in Next.js.",
-      "Performance, accessibility, and maintainability are non-negotiable.",
-      "Ship, observe, refine.",
+      "Design responsive layouts using Avenora’s minimalist system.",
+      "Iterate through focused review rounds before writing code.",
+      "Build in a modern stack — fast, accessible, and production-ready.",
+    ],
+  },
+  {
+    id: "005",
+    title: "LAUNCH & HANDOVER",
+    bullets: [
+      "Run final QA, connect domains, and deploy the live website.",
+      "Deliver source files, admin access, and a concise handover guide.",
+      "Close the project cleanly with clear next-step options.",
+    ],
+  },
+  {
+    id: "006",
+    title: "POST-LAUNCH SUPPORT",
+    bullets: [
+      "Provide 14 days of post-launch bug fixes for peace of mind.",
+      "Offer an optional Avenora Care Plan for ongoing support.",
+      "Collect feedback, testimonials, and archive the project properly.",
     ],
   },
 ];
