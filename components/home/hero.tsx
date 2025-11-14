@@ -9,55 +9,55 @@ import gsap from "gsap";
 export function Hero() {
   const root = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      const cards = gsap.utils.toArray<HTMLElement>(".card");
-      const prefersReduced =
-        typeof window !== "undefined" &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // useGSAP(
+  //   () => {
+  //     const cards = gsap.utils.toArray<HTMLElement>(".card");
+  //     const prefersReduced =
+  //       typeof window !== "undefined" &&
+  //       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      // Final layout is defined by your absolute positions.
-      // We only animate transforms for performance.
-      if (prefersReduced) {
-        gsap.set(cards, { xPercent: 0 });
-        return;
-      }
+  //     // Final layout is defined by your absolute positions.
+  //     // We only animate transforms for performance.
+  //     if (prefersReduced) {
+  //       gsap.set(cards, { xPercent: 0 });
+  //       return;
+  //     }
 
-      cards.forEach((el) =>
-        gsap.set(el, {
-          xPercent: el.className.includes("right-") ? 10 : -10,
-          willChange: "transform",
-        })
-      );
+  //     cards.forEach((el) =>
+  //       gsap.set(el, {
+  //         xPercent: el.className.includes("right-") ? 10 : -10,
+  //         willChange: "transform",
+  //       })
+  //     );
 
-      const enter = () =>
-        gsap.to(cards, {
-          xPercent: 0,
-          duration: 1,
-          ease: "power4.out",
-          overwrite: "auto",
-        });
+  //     const enter = () =>
+  //       gsap.to(cards, {
+  //         xPercent: 0,
+  //         duration: 1,
+  //         ease: "power4.out",
+  //         overwrite: "auto",
+  //       });
 
-      const leave = () =>
-        gsap.to(cards, {
-          xPercent: (i, el) => (el.className.includes("right-") ? 10 : -10),
+  //     const leave = () =>
+  //       gsap.to(cards, {
+  //         xPercent: (i, el) => (el.className.includes("right-") ? 10 : -10),
 
-          duration: 1,
-          ease: "power4.out",
-          overwrite: "auto",
-        });
+  //         duration: 1,
+  //         ease: "power4.out",
+  //         overwrite: "auto",
+  //       });
 
-      const el = root.current!;
-      el.addEventListener("mouseenter", enter, { passive: true });
-      el.addEventListener("mouseleave", leave, { passive: true });
+  //     const el = root.current!;
+  //     el.addEventListener("mouseenter", enter, { passive: true });
+  //     el.addEventListener("mouseleave", leave, { passive: true });
 
-      return () => {
-        el.removeEventListener("mouseenter", enter);
-        el.removeEventListener("mouseleave", leave);
-      };
-    },
-    { scope: root }
-  );
+  //     return () => {
+  //       el.removeEventListener("mouseenter", enter);
+  //       el.removeEventListener("mouseleave", leave);
+  //     };
+  //   },
+  //   { scope: root }
+  // );
   return (
     <section
       ref={root}
@@ -75,9 +75,9 @@ export function Hero() {
           WE BUILT TO BE REMEMBERED
         </h1>
 
-        <div className="relative w-full flex justify-center ">
+        {/* <div className="relative w-full flex justify-center ">
           <div className="w-[600px] h-[50px] md:w-[1000px] md:h-[100px] rounded-[50%] bg-foreground/50 filter blur-2xl " />
-        </div>
+        </div> */}
         {/* --- Mobile Horizontal Carousel (fixed fades) --- */}
         <div className="relative mt-8 w-full md:hidden">
           {/* scroller */}
@@ -108,7 +108,7 @@ export function Hero() {
       </div>
 
       {/* Floating desktop cards */}
-      <div className="cursor-pointer">
+      {/* <div className="cursor-pointer">
         {CARDS.map((c, i) => (
           <figure
             key={i}
@@ -126,7 +126,7 @@ export function Hero() {
             />
           </figure>
         ))}
-      </div>
+      </div> */}
     </section>
   );
 }

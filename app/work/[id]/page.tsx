@@ -1,11 +1,10 @@
-// app/work/[id]/page.tsx
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { PROJECTS } from "@/content/home/projects";
 
 export default async function WorkDetailPage(props: {
-  params: { id: string | Promise<string> };
+  params: Promise<{ id: string }>;
 }) {
   // Next 15/16: params is a Promise
   const { id } = await props.params;
